@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Login from "./auth/Login";
+import ListSujet from "./Sujet/ListSujet";
+import { Redirect, Router, Route, Switch } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {});
+  const history = createBrowserHistory();
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router history={history}>
+        <>
+          <Route path="/login" component={Login} />
+          <Route path="/Listsujet" component={ListSujet} />
+        </>
+      </Router>
     </div>
   );
 }
